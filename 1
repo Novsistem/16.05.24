@@ -1,0 +1,24 @@
+#include <vector>
+#include "gtest/gtest.h"
+
+std::vector<int> increaseVector(std::vector<int> vec, int n) {
+    for (int& value : vec) {
+        value += n;
+    }
+    return vec;
+}
+
+TEST(IncreaseVectorTest, BasicTest) {
+    std::vector<int> input = {1, 2, 3, 4, 5};
+    int n = 10;
+    std::vector<int> expected = {11, 12, 13, 14, 15};
+
+    std::vector<int> result = increaseVector(input, n);
+
+    EXPECT_EQ(result, expected);
+}
+
+int main(int argc, char** argv) {
+    testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
+}
